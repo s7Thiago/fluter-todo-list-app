@@ -2,6 +2,23 @@
 
 A new Flutter project.
 
+<table>
+
+<th>Old version</th>
+<th>New version</th>
+
+<tr>
+<td>
+<img src="old.gif"/>
+</td>
+
+<td>
+<img src="app.gif"/>
+</td>
+</tr>
+
+</table>
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
