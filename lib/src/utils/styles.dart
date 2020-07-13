@@ -26,4 +26,7 @@ class AppStyles {
     color: primaryColorDark2,
     fontWeight: FontWeight.w900,
   );
+
+  // Icons Styles
+
 }

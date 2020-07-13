@@ -19,6 +19,7 @@ class App extends StatelessWidget {
         ),
         routes: {
           AppRoutes.HOME: (_) => HomeScreen(),
+          AppRoutes.NEW_TASK: (_) => HomeScreen(),
         },
       ),
     );
