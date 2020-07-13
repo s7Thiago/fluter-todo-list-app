@@ -14,7 +14,7 @@ class AppFab extends StatelessWidget {
         opaque: false,
         fullscreenDialog: false,
         maintainState: true,
-        transitionDuration: Duration(milliseconds: 550),
+        transitionDuration: Duration(milliseconds: 550), //550
         barrierDismissible: true,
         barrierColor: Colors.black54,
         pageBuilder: (ctx, _, __) {

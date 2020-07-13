@@ -6,60 +6,53 @@ import '../providers/tasks.dart';
 import '../utils/styles.dart';
 
 class NewTaskScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final keyboardSize = MediaQuery.of(context).viewInsets.bottom;
-    final paddingTop = MediaQuery.of(context).size.height * .5;
-    final paddingBottom = MediaQuery.of(context).size.height * .3;
-    final input = CustomInput();
+  _saveNewTask(BuildContext context, CustomInput input) {
+    final provider = Provider.of<Tasks>(context, listen: false);
 
-    _saveNewTask(BuildContext context) {
-      final provider = Provider.of<Tasks>(context, listen: false);
-
+    if (!input.isempty) {
       provider.addTask(Task(title: input.content));
       Navigator.pop(context);
     }
+  }
 
-    return Padding(
-      padding: EdgeInsets.only(
-        top: keyboardSize > 0 ? keyboardSize + 10 : paddingTop - 75,
-        bottom: keyboardSize > 0 ? keyboardSize + 10 : paddingBottom,
-        left: 25,
-        right: 25,
-      ),
-      child: Hero(
-        tag: 'newTask',
-        child: Material(
-          type: MaterialType.transparency,
-          child: Card(
-            child: FittedBox(
-              child: Container(
-                child: Column(
+  @override
+  Widget build(BuildContext context) {
+    final keyboardSize = MediaQuery.of(context).viewInsets.bottom;
+    final input = CustomInput();
+
+    // Setting up onSubmitted
+    input.setOnsubimitted = (content) {
+      final provider = Provider.of<Tasks>(context, listen: false);
+
+      if (!input.isempty) {
+        provider.addTask(Task(title: content));
+        Navigator.pop(context);
+      }
+    };
+
+    return Hero(
+      tag: 'newTask',
+      child: GestureDetector(
+        onTap: () => Navigator.pop(context),
+        child: Scaffold(
+          backgroundColor: Colors.white.withOpacity(.7),
+          body: Align(
+            alignment:
+                keyboardSize > 0 ? Alignment.bottomCenter : Alignment.center,
+            child: Card(
+              child: FittedBox(
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                          right: MediaQuery.of(context).size.width * .4),
-                      child: Text(
-                        'Add a new task',
-                        style: AppStyles.textStyleTaskListContent,
-                      ),
-                    ),
                     input,
-                    Padding(
-                      padding: const EdgeInsets.only(right: 16, top: 20),
-                      child: RaisedButton(
-                        onPressed: () => _saveNewTask(context),
-                        child: Text(
-                          'Save',
-                          style: AppStyles.textStyleAppBarTitle.copyWith(
-                            fontSize: 18,
-                          ),
-                        ),
-                        color: AppStyles.primaryColorLight1,
-                      ),
-                    )
+                    IconButton(
+                      onPressed: () => _saveNewTask(context, input),
+                      icon: Icon(Icons.save),
+                      color: AppStyles.primaryColorLight1,
+                      iconSize: 35,
+                    ),
+                    SizedBox(width: 2)
                   ],
                 ),
               ),

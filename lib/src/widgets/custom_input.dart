@@ -3,8 +3,14 @@ import '../utils/styles.dart';
 
 class CustomInput extends StatelessWidget {
   TextEditingController _controller = TextEditingController();
+  Function _onSubmitted = (content) {};
 
   String get content => _controller.text;
+  bool get isempty => _controller.text.isEmpty || _controller.text == '';
+
+  set setOnsubimitted(Function onSubmitted) {
+    this._onSubmitted = onSubmitted;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +22,9 @@ class CustomInput extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: TextField(
         controller: _controller,
+        autofocus: true,
+        textInputAction: TextInputAction.done,
+        onSubmitted: _onSubmitted,
         cursorColor: AppStyles.primaryColorDark1,
         cursorWidth: 3,
         cursorRadius: Radius.circular(1.5),
