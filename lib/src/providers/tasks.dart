@@ -4,10 +4,10 @@ import 'package:flutter/widgets.dart';
 import 'task.dart';
 
 class Tasks with ChangeNotifier {
-  List<Task> _items = [..._fakeTtems];
+  List<Task> _items = [];
 
   static List<Task> _fakeTtems = List.generate(
-    15,
+    4,
     (index) => Task(
         id: Random().nextDouble().toString(),
         title: '${index < 9 ? '0' : ''}${index + 1}. Task',
@@ -19,10 +19,10 @@ class Tasks with ChangeNotifier {
   int get itemCount => _items.length;
 
   List<Task> get upcomingTasks =>
-      [..._items.where((task) => !task.isFinished).toList()];
+      [..._items.where((task) => !task.isFinished).toList().reversed];
 
   List<Task> get finishedTasks =>
-      [..._items.where((task) => task.isFinished).toList()];
+      [..._items.where((task) => task.isFinished).toList().reversed];
 
   void updateListeners() {
     notifyListeners();

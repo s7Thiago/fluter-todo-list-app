@@ -6,7 +6,7 @@ class Task with ChangeNotifier {
   bool isFinished;
 
   Task({
-    @required this.id,
+    this.id,
     @required this.title,
     this.isFinished = false,
   });

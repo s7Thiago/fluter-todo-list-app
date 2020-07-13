@@ -59,7 +59,7 @@ class _TaskItemState extends State<TaskItem> {
                     horizontal: 20,
                   ),
                   child: Text(
-                    widget.task.title + ' finished: ${widget.task.isFinished}',
+                    widget.task.title,
                     style: widget.task.isFinished
                         ? AppStyles.textStyleTaskListTitle.copyWith(
                             decoration: TextDecoration.lineThrough,
