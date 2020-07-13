@@ -1,4 +1,4 @@
-# chat_app
+# Todo List App
 
 A new Flutter project.
 
