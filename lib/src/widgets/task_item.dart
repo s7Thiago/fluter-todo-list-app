@@ -23,7 +23,6 @@ class _TaskItemState extends State<TaskItem> {
         if (direction == DismissDirection.startToEnd) {
           widget.task.switchFinished();
           Provider.of<Tasks>(context, listen: false).updateListeners();
-          // setState(() {});
         }
       },
       child: InkWell(
