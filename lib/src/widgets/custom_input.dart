@@ -6,9 +6,9 @@ class CustomInput extends StatelessWidget {
   Function _onSubmitted = (content) {};
 
   String get content => _controller.text;
-  bool get isempty => _controller.text.isEmpty || _controller.text == '';
+  bool get isEmpty => _controller.text.isEmpty || _controller.text == '';
 
-  set setOnsubimitted(Function onSubmitted) {
+  set setOnSubmitted(Function onSubmitted) {
     this._onSubmitted = onSubmitted;
   }
 

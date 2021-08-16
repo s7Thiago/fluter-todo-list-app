@@ -13,22 +13,30 @@ class EmptyList extends StatelessWidget {
           child: Stack(
             alignment: Alignment.topRight,
             children: [
-              Image.asset(
-                'assets/empty_list.png',
-                fit: BoxFit.contain,
-              ),
-              Positioned(
-                top: 97,
-                right: 40,
-                child: MessageCard(
-                  message: 'Add some tasks',
+              Center(
+                child: Image.asset(
+                  'assets/empty_list.png',
+                  fit: BoxFit.contain,
                 ),
               ),
-              Positioned(
-                top: 78,
-                right: 60,
-                child: MessageCard(
-                  message: 'Nothing to show',
+              Center(
+                child: Stack(
+                  children: [
+                    Positioned(
+                      top: 197,
+                      right: MediaQuery.of(context).size.width * .41,
+                      child: MessageCard(
+                        message: 'Add some tasks',
+                      ),
+                    ),
+                    Positioned(
+                      top: 170,
+                      right: MediaQuery.of(context).size.width * .4,
+                      child: MessageCard(
+                        message: 'Nothing to show',
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
