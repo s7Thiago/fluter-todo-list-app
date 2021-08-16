@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_list_app/src/providers/task.dart';
 import 'package:todo_list_app/src/widgets/custom_input.dart';
+
 import '../providers/tasks.dart';
-import '../utils/styles.dart';
 
 class NewTaskScreen extends StatelessWidget {
   /// Save a new task to the Tasks provider.
@@ -32,12 +32,10 @@ class NewTaskScreen extends StatelessWidget {
       }
     };
 
-    print('size: $size');
-
     return Padding(
       padding: EdgeInsets.only(
-        top: (size.height * .25).clamp(15.0, 300.0),
-        bottom: (size.height * .25).clamp(150.0, 200.0),
+        top: (size.height * .24).clamp(15.0, 300.0),
+        bottom: (size.height * .35).clamp(200.0, 400.0),
         left: (size.width * (size.width < 1000 ? .1 : .35)).clamp(15.0, 800.0),
         right: (size.width * (size.width < 1000 ? .1 : .35)).clamp(15.0, 800.0),
       ),
@@ -49,22 +47,37 @@ class NewTaskScreen extends StatelessWidget {
             physics: BouncingScrollPhysics(),
             child: Material(
               type: MaterialType.transparency,
-              child: Card(
-                semanticContainer: true,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    SizedBox(height: 100),
-                    input,
-                    SizedBox(height: 100),
-                    IconButton(
-                      onPressed: () => _saveNewTask(context, input),
-                      icon: Icon(Icons.save),
-                      color: AppStyles.primaryColorLight1,
-                      iconSize: 35,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Container(
+                height: 290,
+                child: Card(
+                  semanticContainer: true,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        SizedBox(),
+                        input,
+                        SizedBox(),
+                        ElevatedButton(
+                          onPressed: () => _saveNewTask(context, input),
+                          child: Text('Save'),
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.teal),
+                          ),
+                        ),
+                        // SizedBox(),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             ),
